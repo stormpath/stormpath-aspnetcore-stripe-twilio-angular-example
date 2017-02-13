@@ -1,0 +1,100 @@
+﻿.todos li{
+  width: 50%;
+}
+
+.todo span{
+  padding: .5rem;
+  display: inline-block;
+  width: 90%;
+}
+
+.todo span.completed{
+  color: lightgray;
+  text-decoration: line-through;
+}
+
+.new-todo{
+  margin-top: .5rem;
+}
+
+.new-todo input {
+  width: 50%;
+}
+
+/* Dashboard */
+
+.header-panel {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+.header-panel .api-key {
+
+}
+
+.header-panel .api-secret {
+
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 4em 0;
+}
+
+.dashboard-container .left, .dashboard-container .right {
+    width: 45%;
+}
+
+.total-queries, .balance {
+    font-size: 2em;
+}
+
+.send-sms-form {
+    margin: 4em 0;
+}
+
+.send-sms-form button {
+    margin-left: 2em;
+}
+
+.sending-sms-spinner {
+    display: inline-block;
+    margin-left: 2em;
+}
+
+/* End Dashboard */
+
+/* Payment Form */
+
+.payment-form {
+    min-width: 400px;
+}
+
+.payment-form .btn-container {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.errors-container {
+    height: 50px;
+}
+
+.errors-container .form-error {
+    padding: 1em 2em;
+    background: #FDBABA;
+    border-color: #A94442;
+    color: #A94442;
+}
+
+.errors-container div {
+    display: none;
+}
+
+.errors-container div:first-child {
+    display: block;
+}
+
+/* End Payment Form */

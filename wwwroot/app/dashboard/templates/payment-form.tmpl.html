@@ -1,0 +1,53 @@
+﻿<md-dialog aria-label="Payment Form">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Payment Form</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closePaymentFormModal()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form class="form-horizontal payment-form" stripe-form="stripeCallback" name="form">
+                <div class="form-group" ng-class="{ 'has-error': form.card.$dirty && form.card.$invalid }">
+                    <label for="card" class="control-label col-sm-4">Card number</label>
+                    <div class="col-sm-8">
+                        <input ng-model="number" placeholder="Card Number" payments-format="card"
+                               class="form-control" payments-validate="card" id="card" name="card" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.expiry.$dirty && form.expiry.$invalid }">
+                    <label for="expiry" class="control-label col-sm-4">Expiry Date</label>
+                    <div class="col-sm-8">
+                        <input ng-model="expiry" placeholder="Expiration" payments-format="expiry"
+                               class="form-control" payments-validate="expiry" id="expiry" name="expiry" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.cvc.$dirty && form.cvc.$invalid }">
+                    <label for="cvc" class="control-label col-sm-4">CVC</label>
+                    <div class="col-sm-8">
+                        <input ng-model="cvc" placeholder="CVC" payments-format="cvc"
+                               class="form-control" payments-validate="cvc" id="cvc" name="cvc" ng-required="true" />
+                    </div>
+                </div>
+                <div class="form-group btn-container">
+                    <button class="btn btn-default btn-primary" type="submit" ng-disabled="!form.$valid || processingPayment">Pay $20.00</button>
+                    <md-icon ng-if="processingPayment" md-svg-src="img/ellipsis.svg" aria-label="Close dialog"></md-icon>
+                </div>
+            </form>
+            <div class="errors-container">
+                <div ng-if="form.card.$dirty && form.card.$invalid" class="panel panel-default form-error">
+                    <i>Error: Invalid card number</i>
+                </div>
+                <div ng-if="form.expiry.$dirty && form.expiry.$invalid" class="panel panel-default form-error">
+                    <i>Error: Invalid expiration date</i>
+                </div>
+                <div ng-if="form.cvc.$dirty && form.cvc.$invalid" class="panel panel-default form-error">
+                    <i>Error: Invalid CVC</i>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,17 @@
+<section ng-controller="TodoController as vm" ng-init="vm.loadTodos()">
+  <ul class="list-unstyled todos">
+    <li ng-repeat="todo in vm.todos" class="todo">
+      <input type="checkbox" ng-model="todo.completed" ng-click="vm.markComplete(todo)" /> 
+      <span ng-class="{completed:todo.completed}">{{todo.description}}</span> 
+      <button class="btn btn-xs btn-danger" ng-click="vm.deleteTodo(todo)">&times;</button>
+    </li>
+    <li class="form-group new-todo">
+      <div class="input-group">
+        <input class="form-control" type="text" ng-model="vm.newTodo.description">
+        <span class="input-group-btn">
+          <button class="btn btn-default" ng-click="vm.addTodo()">Add</button>
+        </span>
+      </div>
+    </li>
+  </ul>
+</section>

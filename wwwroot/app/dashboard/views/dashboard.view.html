@@ -1,0 +1,44 @@
+﻿<section ng-controller="DashboardController as vm" ng-init="vm.loadData()" ng-cloak>
+    <div class="panel panel-default header-panel">
+        <div class="api-key">
+            <strong>API Key:</strong>
+            <span>{{ vm.apiKeyId }}</span>
+        </div>
+        <div class="api-secret">
+            <strong>API Secret:</strong>
+            <span>{{ vm.apiKeySecret }}</span>
+        </div>
+    </div>
+    <div class="dashboard-container">
+        <div class="left panel panel-primary">
+            <div class="panel-heading text-center">
+                <h4>Analytics</h4>
+            </div>
+            <div class="panel-body text-center">
+                <p class="total-queries">{{ vm.totalQueries }}</p>
+                <p><i>* Total queries</i></p>                
+            </div>
+        </div>
+        <div class="right panel panel-primary">
+            <div class="panel-heading text-center">
+                <h4>Billing</h4>
+            </div>
+            <div class="panel-body text-center">
+                <p class="balance">{{ (vm.balance / 100) | currency }}</p>
+                <p><i>* Current Account Balance</i></p>
+                <button class="btn btn-default btn-primary" ng-click="vm.showPaymentForm()">Pay with Card</button>
+            </div>
+        </div>
+    </div>
+    <form ng-if="vm.balance > 0" class="form-inline send-sms-form" ng-submit="vm.sendBitcoinExchangeRate()">
+        <div class="form-group">
+            <label for="phone-number">Phone number:</label>
+            <input type="text" class="form-control" id="phone-number" name="phone-number" placeholder="ex. +15551234567" value="" ng-model="vm.phoneNumber" />
+        </div>
+        <button type="submit" class="btn btn-default btn-primary">Send BitCoin Rate by SMS</button>
+        <div ng-if="vm.sendingSMS" class="sending-sms-spinner">
+            <span>Sending SMS</span>
+            <md-icon md-svg-src="img/ellipsis.svg" aria-label="Close dialog"></md-icon>
+        </div>
+    </form>
+</section>
